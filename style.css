@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
+* {
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-image: linear-gradient(to top, #c2fff9, hsl(186, 100%, 34%));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.music-container {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 10px 0 rgba(0, 157, 174, 0.4);
+  display: flex;
+  padding: 1rem;
+  margin: 100px 0;
+  position: relative;
+  z-index: 10;
+}
+
+.img-container {
+  position: relative;
+  width: 110px;
+}
+.img-container::after {
+  content: "";
+  background-color: white;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 105%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.img-container img {
+  border-radius: 50%;
+  object-fit: cover;
+  height: 110px;
+  width: inherit;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  animation: rotate 3s linear infinite;
+  animation-play-state: paused;
+}
+.music-container.play .img-container img {
+  animation-play-state: running;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.action-btn {
+  background-color: white;
+  border: 0;
+  color: #71dfe7;
+  cursor: pointer;
+  padding: 1px;
+  margin: 0 20px;
+}
+
+.action-btn.action-btn-big {
+  color: #009dae;
+  font-size: 2rem;
+}
+
+.music-info {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px 10px 0 0;
+  width: 280px;
+  padding: 10px 10px 10px 120px;
+  position: absolute;
+  top: 0;
+  left: 20px;
+  opacity: 0;
+  transform: translateY(0%);
+  transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+  z-index: 0;
+}
+
+.music-info h5 {
+  margin: 0;
+}
+
+.music-container.play .music-info {
+  opacity: 1;
+  transform: translateY(-100%);
+}
+
+.progress-container {
+  background: white;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 8px 0;
+  height: 4px;
+  width: 100%;
+}
+
+.progress {
+  background-color: #009dae;
+  border-radius: 5px;
+  height: 100%;
+  width: 0%;
+  transition: width 0.1s linear;
+}
